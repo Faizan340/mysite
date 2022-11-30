@@ -1,0 +1,15 @@
+<ul>
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    {% comment %} <li>{{ object.id }}</li> {% endcomment %}
+    <li>{{ object.title }}</li>
+    <li>{{ object.created_on }}</li>
+    <li>{{ object.sno }}</li>
+    <a href = "/blog/detail/{{ object.sno }}/">Read More</a>
+    <hr/>
+    <!-- If object_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>

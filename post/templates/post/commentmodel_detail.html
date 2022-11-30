@@ -1,0 +1,7 @@
+{% for comm in postmodel.commentsname.all %}
+  User--{{ comm.author }}
+  <br>
+  Comment--{{ comm.comment_text}}
+  <br>
+{% endfor %}
+<h1>Hello</h1>

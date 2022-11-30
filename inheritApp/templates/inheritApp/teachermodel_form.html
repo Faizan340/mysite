@@ -1,0 +1,9 @@
+<h1>Heyyy</h1>
+Teacher
+<form method = "POST" enctype = "multipart/form-data">
+    {% csrf_token%}
+    <div class="form-group">
+    {{form.as_p}}
+    </div>
+    <input type = "submit" value ="Submit">
+</form>

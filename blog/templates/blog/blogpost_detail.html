@@ -1,0 +1,52 @@
+<html>
+
+<h1>TITLE -- {{ object.title }}</h1>
+ 
+ 
+ 
+<h3>Serial no. --   {{ object.sno }}</h3>
+<h3>Content --   {{ object.content }}</h3>
+<h3>Author --   {{ object.author }}</h3>
+<h3>Created on --     {{ object.created_on }}</h3>
+<h3>Updated on --    {{ object.updated_on }}</h3>
+{% comment %} <h3>{{ object. }}</p> {% endcomment %}
+<hr>
+
+<div>
+    <form method = "POST" enctype = "multipart/form-data">
+        {% csrf_token%}
+        <h2> Comment Here<h2>
+        {{form.as_p}}
+        <input type = "submit" value ="Submit">
+    </form>
+</div>
+ 
+{% comment %} {% for object in object_list %}
+<p><strong>{{comment.author_name}}:</strong> {{comment.comment_text}}</p>
+{%endfor %} {% endcomment %}
+
+
+{% comment %} {% for comm in blogpost.comments.all %}
+  {{ comm.author }}
+  {{ comm.comment_text}}
+{% endfor %} {% endcomment %}
+
+
+
+{% comment %} <ul>
+    <!-- Iterate over object_list -->
+    {% for obj in commentslist %}
+    <!-- Display Objects -->
+    {% comment %} <li>{{ object.id }}</li>
+    <li>{{ obj.author }}</li>
+    <li>{{ obj.blog_content }}</li>
+    <li>{{ obj.comment_text }}</li>
+    <hr/>
+    <!-- If object_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul> {% endcomment %}
+
+
+</html>

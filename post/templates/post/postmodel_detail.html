@@ -1,0 +1,71 @@
+
+<h1>TITLE -- {{ object.title }}</h1> 
+<h3>Content --   {{ object.content }}</h3>
+<h3>Image --   {{ object.user_image }}</h3>
+<h3>Author --   {{ object.author }}</h3>
+<h3>Created on --     {{ object.created_on }}</h3>
+<h3>Updated on --    {{ object.updated_on }}</h3>
+<hr>
+
+<div>
+  {% if user.is_authenticated %}
+  <form action={% url 'post:Commentcreate' pk=object.id %} method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+  </form>
+  {% else %}
+    Please login to post a comment 
+  {% endif %}
+</div> 
+<hr>
+<h1>Comments</h1>
+
+<br>
+{% for comm in postmodel.commentsname.all %}
+  User--{{ comm.author }}
+  <br>
+  Comment--{{ comm.comment_text}}
+  <br>
+
+  {% comment %} <script type="text/javascript">
+    function UpdateForm(id) {
+      let elm = `<form method="POST" class="p-5 bg-light">
+        {% csrf_token %}
+        <div class="form-group">
+          <input type='text' value='${id}' name = 'comm_id' style="display:none;" readonly/>
+            <label for="message">Update Comment</label>
+            <textarea name="comm" id="message" cols="30" rows="3" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+               <input type="submit" value="Update Comment" class="btn btn-primary py-3">
+         </div>
+                      </form>`;
+                      document.getElementById(id).innerHTML = elm;
+                      }
+                    </script> {% endcomment %}
+                        
+
+  {% comment %} {% if comm.user == user %} {% endcomment %}
+    <form method="post" action={% url 'post:Commentupdate' pk=comm.id %}>
+      {% csrf_token %}
+        <input type="submit" value="Update me">
+    </form>
+  {% comment %} {% endif %} {% endcomment %}
+
+  <form method="post" action={% url 'post:Commentdelete' pk=comm.id %}>
+    {% csrf_token %}
+        <input type="submit" value="Delete me">
+  </form>
+
+  {% comment %} {% comment %} {% if Commentmodel.user == user %}
+    <div>
+      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post:Commentupdate' %}">Update</a>
+      {% comment %} <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'blog:post-commentd' post.slug %}">Delete</a>
+    </div>
+      {% endcomment %}
+  
+    
+  <br>
+  <br>
+{% endfor %}

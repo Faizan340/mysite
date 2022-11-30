@@ -1,0 +1,10 @@
+<h1>Hii</h1>
+Parent
+
+<form method = "POST" enctype = "multipart/form-data">
+    {% csrf_token%}
+    <div class="form-group">
+    {{form.as_p}}
+    </div>
+    <input type = "submit" value ="Submit">
+</form>

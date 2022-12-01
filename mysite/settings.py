@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'ajx',
     # 'sign',
     'sign.apps.SignConfig',
-    'inheritApp'
+    'inheritApp',
+    'mysite'
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'middle.middlewares.exampleMiddleware',
+    'middle.middlewares.SonMiddleware',
+    'middle.middlewares.FatherMiddleware',
+    'middle.middlewares.MotherMiddleware',
+    'middle.middlewares.HookMiddleware',
+    'middle.middlewares.UserMiddleware'
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -65,7 +72,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
-        # 'DIRS':[os.path.join(BASE_DIR,'brown','templates')],
+        'DIRS':[os.path.join(BASE_DIR,'middle','templates')],
         #'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {

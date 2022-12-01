@@ -13,7 +13,8 @@ urlpatterns = [
     path('product/',include('product.urls')),
     path('ajx/',include('ajx.urls')),
     path('sign/',include('sign.urls')),
-    path('inheritApp/',include('inheritApp.urls'))
+    path('inheritApp/',include('inheritApp.urls')),
+    path('middle/',include('middle.urls'))
     
 ]
 if settings.DEBUG:

@@ -1,0 +1,17 @@
+{% if request.user.is_authenticated %}
+<p>Logged in as - {{ request.user }}</p>
+<a href = "{% url 'authh:logout' %}">Logout</a>
+<br><br>
+<a href = "{% url 'authh:password_change' %}">Password Change</a>
+<hr>
+<form method = "POST" enctype = "multipart/form-data">
+    {% csrf_token%}
+    <div class="form-group">
+    {{form.as_p}}
+    </div>
+    <input type = "submit" value ="Submit">
+</form>
+{% else %}
+<h2>Please Login To Continue</h2>
+<a href = "{% url 'authh:login' %}">Login</a>
+{% endif %}

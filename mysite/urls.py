@@ -14,8 +14,9 @@ urlpatterns = [
     path('ajx/',include('ajx.urls')),
     path('sign/',include('sign.urls')),
     path('inheritApp/',include('inheritApp.urls')),
-    path('middle/',include('middle.urls'))
-    
+    path('middle/',include('middle.urls')),
+    path('authh/',include('authh.urls')),
+    path('', include('django.contrib.auth.urls'))
 ]
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
